@@ -1,5 +1,24 @@
 [
   {
+    "id": "pldmgrx",
+    "name": "Payload Manager X",
+    "filename": "pldmgrx_v1.1.0.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/pldmgrx_v1.1.0.elf",
+    "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
+    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/x-v1.1.0/pldmgrx_v1.1.0.elf",
+    "author": "bsk193",
+    "details_url": "https://github.com/bsk193/ps5-payload-manager-x",
+    "release_notes": "",
+    "description": "A modern, web-based dashboard to easily manage, import, and automatically load payloads on your PS5 (bsk193's fork with Payload Manager X features).",
+    "last_update": "2026-11-03",
+    "version": "1.1.0",
+    "category": "Loaders",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "96009a09abc1f88031f6363c31352537023dc1a8f8cfa23e3e001c0c3ce7d392",
+    "icon_key": ""
+  },
+  {
     "id": "ps5upload",
     "name": "ps5upload",
     "filename": "ps5upload_v10.7.6.elf",
@@ -473,25 +492,6 @@
     "max_fw": "7.61",
     "checksum": "9fc48733077145d1d204a4c9cdb879baaab1e711a604dd73af0dd4a807d6bc49",
     "icon_key": "b3d73d513d62b4d6c880873e46cbea07b977c9bc03295c7e3a31e091fda7a8f7"
-  },
-  {
-    "id": "pldmgrx",
-    "name": "Payload Manager X",
-    "filename": "pldmgrx_v0.5.1.8x.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/pldmgrx_v0.5.1.8x.elf",
-    "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
-    "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/v0.5.1.8x/pldmgrx_v0.5.1.8x.elf",
-    "author": "bsk193",
-    "details_url": "https://github.com/bsk193/ps5-payload-manager-x/releases",
-    "release_notes": "",
-    "description": "",
-    "last_update": "2026-08-25",
-    "version": "v0.5.1.8x",
-    "category": "Loaders",
-    "min_fw": "",
-    "max_fw": "",
-    "checksum": "4bdb75ea40e0d21cfcd74a3ba16d86c2c85d7cc36ccd21bb3fd33bf3e4bbd213",
-    "icon_key": ""
   },
   {
     "id": "ps5-date-time-sync",
