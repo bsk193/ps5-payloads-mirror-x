@@ -1,24 +1,5 @@
 [
   {
-    "id": "ps5upload",
-    "name": "ps5upload",
-    "filename": "ps5upload_v10.7.2.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/ps5upload_v10.7.2.elf",
-    "source": "https://github.com/phantomptr/ps5upload/releases",
-    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v10.7.2/ps5upload-10.7.2.elf",
-    "author": "phantomptr",
-    "details_url": "https://github.com/phantomptr/ps5upload/releases",
-    "release_notes": "",
-    "description": "Fast, reliable transfers from your computer to your PS5 (requires PC app)",
-    "last_update": "2026-11-02",
-    "version": "v10.7.2",
-    "category": "Networking & Servers",
-    "min_fw": "",
-    "max_fw": "",
-    "checksum": "afb8b1965796795f308dcc8e27be1a2e80feeaddbb85e3c94823ba46dabeb0d2",
-    "icon_key": "8659496467090d2a8b6c7b1a6887702cc15d5b1be3ca05aee99f2b7c382244b0"
-  },
-  {
     "id": "ps5-dump-forge",
     "name": "ps5-dump-forge",
     "filename": "ps5-dump-forge_v0.5.1.elf",
@@ -399,25 +380,6 @@
     "icon_key": "3b36ccc3ede9cf0aed3baea3cddc67d1df892ce9ef5a14104e275ef920270dd1"
   },
   {
-    "id": "etahen",
-    "name": "etaHEN",
-    "filename": "etaHEN-2.6b.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/etaHEN-2.6b.elf",
-    "source": "https://github.com/etaHEN/etaHEN/releases",
-    "source_direct": "",
-    "author": "etaHEN",
-    "details_url": "https://github.com/etaHEN/etaHEN/releases",
-    "release_notes": "",
-    "description": "",
-    "last_update": "2026-09-20",
-    "version": "2.6b",
-    "category": "System & Jailbreak",
-    "min_fw": "",
-    "max_fw": "",
-    "checksum": "8ce5ab4eaff10679920bf7397bb081ca9c18aa159d134cae8f1af3a4290b91b6",
-    "icon_key": ""
-  },
-  {
     "id": "ftpsrv-drakmor",
     "name": "ftpsrv-drakmor",
     "filename": "ftpsrv-drakmor_1.16-ng-stable.elf",
@@ -454,25 +416,6 @@
     "max_fw": "",
     "checksum": "ab9a6cb4d3b1daf139d4d646e402b1cf569071acd64599c936d7a3a6164dc779",
     "icon_key": "bfb17e40ad9e638c1eaae93bc8d9a336dab35fd51eaeb7251f122e0b1fd53f8b"
-  },
-  {
-    "id": "pegasusdl",
-    "name": "PegasusDL",
-    "filename": "pegasus_dl_v1.9.0.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/pegasus_dl_v1.9.0.elf",
-    "source": "https://github.com/pegasus-ps5/pegasus-dl/releases",
-    "source_direct": "https://github.com/pegasus-ps5/pegasus-dl/releases/download/v1.9.0/pegasus_dl.elf",
-    "author": "pegasus-ps5",
-    "details_url": "https://github.com/pegasus-ps5/pegasus-dl/releases",
-    "release_notes": "",
-    "description": "",
-    "last_update": "2026-09-15",
-    "version": "v1.9.0",
-    "category": "Utilities & Tools",
-    "min_fw": "",
-    "max_fw": "",
-    "checksum": "6336c626f0fbdef1272cc5d4e0239d7b44bf40f8106679083cf50d4c8e02389b",
-    "icon_key": ""
   },
   {
     "id": "ps5-linux-loader",
