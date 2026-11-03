@@ -1,5 +1,24 @@
 [
   {
+    "id": "ps5upload",
+    "name": "ps5upload",
+    "filename": "ps5upload_v10.7.6.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/ps5upload_v10.7.6.elf",
+    "source": "https://github.com/phantomptr/ps5upload/releases",
+    "source_direct": "https://github.com/phantomptr/ps5upload/releases/download/v10.7.6/ps5upload-10.7.6.elf",
+    "author": "phantomptr",
+    "details_url": "https://github.com/phantomptr/ps5upload/releases",
+    "release_notes": "",
+    "description": "Fast, reliable transfers from your computer to your PS5 (requires PC app)",
+    "last_update": "2026-11-02",
+    "version": "v10.7.6",
+    "category": "Networking & Servers",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "354053806db54695837576bbe7f80740420884486eef00b4a6b4c77f654035e0",
+    "icon_key": "8659496467090d2a8b6c7b1a6887702cc15d5b1be3ca05aee99f2b7c382244b0"
+  },
+  {
     "id": "ps5-dump-forge",
     "name": "ps5-dump-forge",
     "filename": "ps5-dump-forge_v0.5.1.elf",
@@ -834,5 +853,24 @@
     "max_fw": "",
     "checksum": "f1c1f4b2b6395644af04cbe9828aba58586acf7aacb9e01113cac92ce16e3569",
     "icon_key": ""
+  },
+  {
+    "id": "etahen",
+    "name": "etaHEN",
+    "filename": "etaHEN_2.5B.bin",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/etaHEN_2.5B.bin",
+    "source": "https://github.com/etaHEN/etaHEN/releases",
+    "source_direct": "https://github.com/etaHEN/etaHEN/releases/download/2.5B/etaHEN-2.5B.bin",
+    "author": "etaHEN",
+    "details_url": "https://github.com/etaHEN/etaHEN/releases",
+    "release_notes": "",
+    "description": "AIO HEN payload",
+    "last_update": "2025-12-25",
+    "version": "2.5B",
+    "category": "System & Jailbreak",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "4845cac45095361b8983b14d6690622183b0dcfbf6d7fda16e161aa91ff0531e",
+    "icon_key": "6f211e808fe2ea7408186264fe3c7afe5f0d69b236bcb7d697f2ca48a8ddebcd"
   }
 ]
