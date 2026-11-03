@@ -19,6 +19,25 @@
     "icon_key": "8659496467090d2a8b6c7b1a6887702cc15d5b1be3ca05aee99f2b7c382244b0"
   },
   {
+    "id": "jobeeslair",
+    "name": "Jobee's Lair",
+    "filename": "JobeesLair.exfat",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror/releases/download/payloads-mirror/JobeesLair.exfat",
+    "source": "https://github.com/JVK3R/JobeesLair/releases",
+    "source_direct": "https://github.com/JVK3R/JobeesLair/releases/download/v0.5.5/JobeesLair.exfat",
+    "author": "JVK3R",
+    "details_url": "https://github.com/JVK3R/JobeesLair",
+    "release_notes": "",
+    "description": "Standalone, content-neutral PS5 homebrew indexer and media framework (open-source homebrew download manager, title ID PPSA99471).",
+    "last_update": "2026-11-02",
+    "version": "v0.5.5",
+    "category": "Utilities & Tools",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "3ecb24c278453b12f5de382fe1a06804e749c404e60ad15b795cde4d193026eb",
+    "icon_key": ""
+  },
+  {
     "id": "ps5-dump-forge",
     "name": "ps5-dump-forge",
     "filename": "ps5-dump-forge_v0.5.1.elf",
