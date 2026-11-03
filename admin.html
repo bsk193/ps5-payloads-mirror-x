@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalog Admin · ps5-payloads-mirror-x</title>
+<style>
+:root {
+  --bg: #0e0f12;
+  --bg-elev: #16181d;
+  --bg-elev-2: #1d2027;
+  --fg: #e6e8ec;
+  --fg-dim: #8b94a3;
+  --fg-faint: #5b6472;
+  --border: #262a33;
+  --accent: #4e9eff;
+  --accent-dim: #2d5a99;
+  --ok: #4bd98b;
+  --warn: #f5b84a;
+  --err: #ef6b6b;
+  --exp: #c38fff;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f7f8fa;
+    --bg-elev: #ffffff;
+    --bg-elev-2: #eef0f4;
+    --fg: #1a1d23;
+    --fg-dim: #5b6472;
+    --fg-faint: #8b94a3;
+    --border: #d8dce3;
+    --accent: #0969da;
+    --accent-dim: #c5dbf5;
+    --ok: #1a7f45;
+    --warn: #a86a00;
+    --err: #c93c3c;
+    --exp: #7f3fcc;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f7f8fa;
+  --bg-elev: #ffffff;
+  --bg-elev-2: #eef0f4;
+  --fg: #1a1d23;
+  --fg-dim: #5b6472;
+  --fg-faint: #8b94a3;
+  --border: #d8dce3;
+  --accent: #0969da;
+  --accent-dim: #c5dbf5;
+  --ok: #1a7f45;
+  --warn: #a86a00;
+  --err: #c93c3c;
+  --exp: #7f3fcc;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--fg);
+  background: var(--bg);
+  min-height: 100vh;
+}
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+header h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+header .counts {
+  color: var(--fg-dim);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+header .counts.dirty { color: var(--warn); font-weight: 500; }
+header .spacer { flex: 1; }
+input[type="text"], input[type="url"], input[type="number"], input[type="date"], select, textarea {
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  min-width: 0;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+textarea { font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace; font-size: 12px; }
+button {
+  background: var(--bg-elev-2);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+button:hover { border-color: var(--accent); color: var(--accent); }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+button:disabled:hover { border-color: var(--border); color: var(--fg); }
+button.primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+button.primary:hover { background: var(--accent-dim); color: #fff; }
+button.danger { color: var(--err); border-color: transparent; }
+button.danger:hover { border-color: var(--err); background: color-mix(in srgb, var(--err) 10%, transparent); }
+button.small { padding: 3px 8px; font-size: 12px; }
+button.ghost { background: transparent; border-color: transparent; color: var(--fg-dim); }
+button.ghost:hover { color: var(--accent); background: var(--bg-elev-2); }
+
+main { padding: 20px; max-width: 1400px; margin: 0 auto; }
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filters input[type="text"] { flex: 1; min-width: 200px; }
+.filters .chip {
+  padding: 4px 10px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--fg-dim);
+  cursor: pointer;
+  user-select: none;
+}
+.filters .chip.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.slot {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.slot-head {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.slot-head:hover { background: var(--bg-elev-2); }
+.slot-head .caret {
+  color: var(--fg-faint);
+  font-size: 10px;
+  transition: transform 0.1s;
+  width: 10px;
+  text-align: center;
+}
+.slot.open .slot-head .caret { transform: rotate(90deg); }
+.slot-name { font-weight: 600; }
+.slot-id {
+  color: var(--fg-faint);
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+}
+.slot-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--fg-dim);
+  font-size: 12px;
+  margin-left: auto;
+}
+.slot-meta .badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--bg-elev-2);
+  font-size: 11px;
+  font-weight: 500;
+}
+.slot-meta .badge.cat { color: var(--accent); }
+.slot-meta .badge.fw { color: var(--warn); font-family: ui-monospace, Menlo, monospace; }
+.slot-meta .badge.count { background: var(--accent-dim); color: #fff; }
+.slot-meta .badge.exfat { color: var(--exp); border: 1px solid var(--exp); }
+
+.slot-body { display: none; }
+.slot.open .slot-body { display: block; }
+.version-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 16px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+}
+.version-row:hover { background: var(--bg-elev-2); }
+.version-tag {
+  font-family: ui-monospace, Menlo, monospace;
+  padding: 2px 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  min-width: 80px;
+  text-align: center;
+}
+.version-row.exp .version-tag { color: var(--exp); border-color: var(--exp); }
+.version-row.latest .version-tag { color: var(--ok); border-color: var(--ok); font-weight: 600; }
+.version-filename {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  color: var(--fg-dim);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.version-date { color: var(--fg-faint); font-size: 11px; font-variant-numeric: tabular-nums; }
+.version-actions { display: flex; gap: 4px; }
+.slot-footer {
+  padding: 8px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  gap: 8px;
+}
+
+.slot.dirty { border-color: var(--warn); }
+.slot.new { border-color: var(--ok); }
+.version-row.dirty { background: color-mix(in srgb, var(--warn) 10%, transparent); }
+.version-row.new { background: color-mix(in srgb, var(--ok) 10%, transparent); }
+
+.modal-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, #000 60%, transparent);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-bg.open { display: flex; }
+.modal {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+.modal h2 { margin: 0 0 16px 0; font-size: 16px; }
+.modal .row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.modal .row.full { grid-template-columns: 1fr; }
+.modal label { color: var(--fg-dim); font-size: 12px; }
+.modal label small { color: var(--fg-faint); font-weight: normal; display: block; }
+.modal input, .modal select, .modal textarea { width: 100%; }
+.modal textarea { min-height: 60px; resize: vertical; }
+.modal .footer {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.modal .footer .spacer { flex: 1; }
+.modal .section-title {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+  color: var(--fg-dim);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.msg {
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+.msg.err { background: color-mix(in srgb, var(--err) 15%, transparent); color: var(--err); }
+.msg.ok { background: color-mix(in srgb, var(--ok) 15%, transparent); color: var(--ok); }
+.msg.info { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }
+
+footer {
+  text-align: center;
+  color: var(--fg-faint);
+  font-size: 11px;
+  padding: 24px 20px 40px;
+}
+footer a { color: var(--fg-dim); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+footer code { background: var(--bg-elev); padding: 1px 5px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Catalog Admin · ps5-payloads-mirror-x</h1>
+  <span class="counts" id="counts">loading…</span>
+  <span class="spacer"></span>
+  <input type="url" id="source" value="payloads_v2.json" style="width: 280px" title="Catalog source URL (relative or absolute)">
+  <button id="loadBtn">Load</button>
+  <button class="ghost" id="themeToggle" title="Toggle theme">🌓</button>
+  <button class="primary" id="exportBtn" disabled>Export JSON ↓</button>
+</header>
+
+<main>
+  <div class="filters">
+    <input type="text" id="search" placeholder="Search by name, id, filename, author, description…">
+    <span class="chip" data-cat="">All</span>
+    <span class="chip" data-cat="Utilities &amp; Tools">Utilities &amp; Tools</span>
+    <span class="chip" data-cat="Loaders">Loaders</span>
+    <span class="chip" data-cat="System &amp; Jailbreak">System &amp; Jailbreak</span>
+    <span class="chip" data-cat="Networking &amp; Servers">Networking &amp; Servers</span>
+    <span class="chip" data-ch="experimental">⚑ experimental</span>
+    <span class="chip" data-ch="exfat">⬢ .exfat</span>
+    <span class="spacer" style="flex:1"></span>
+    <button id="addSlotBtn">+ New slot</button>
+  </div>
+
+  <div id="status"></div>
+  <div id="slots"></div>
+</main>
+
+<footer>
+  Catalog is loaded in-browser, edited in-memory. Export downloads modified
+  <code>payloads_v2.json</code> + <code>payloads.json</code> (legacy, current-latest-per-slot).
+  Commit to <a href="https://github.com/bsk193/ps5-payloads-mirror-x" target="_blank">bsk193/ps5-payloads-mirror-x</a> manually.
+</footer>
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+"use strict";
+
+const CATEGORIES = ["Utilities & Tools", "Loaders", "System & Jailbreak", "Networking & Servers"];
+const CHANNELS = ["stable", "experimental"];
+const FIELD_ORDER = [
+  "id","name","filename","url","source","source_direct","author","details_url",
+  "release_notes","description","last_update","version","category","channel",
+  "min_fw","max_fw","checksum","icon_key"
+];
+const BASE_URL = "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror";
+
+const state = {
+  active: null,
+  originalById: new Map(),
+  filter: { q: "", cat: "", ch: "" },
+  openSlots: new Set(),
+};
+
+const el = (sel) => document.querySelector(sel);
+const els = (sel) => document.querySelectorAll(sel);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const entryKey = (e) => `${e.id}|${e.version}|${e.filename}`;
+
+function setStatus(msg, type) {
+  const s = el("#status");
+  if (!msg) { s.innerHTML = ""; return; }
+  s.innerHTML = `<div class="msg ${type || "info"}">${esc(msg)}</div>`;
+  if (type === "ok") setTimeout(() => { if (s.textContent.includes(msg.slice(0,20))) s.innerHTML = ""; }, 4000);
+}
+
+async function load() {
+  const url = el("#source").value.trim();
+  setStatus(`loading ${url}…`, "info");
+  try {
+    const r = await fetch(url + (url.includes("?") ? "&" : "?") + "_=" + Date.now());
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const j = await r.json();
+    if (!j || !Array.isArray(j.payloads)) throw new Error("not a v2 catalog (no `payloads` array)");
+    state.active = structuredClone(j);
+    state.originalById.clear();
+    for (const e of j.payloads) state.originalById.set(entryKey(e), structuredClone(e));
+    setStatus(`loaded ${j.payloads.length} entries across ${new Set(j.payloads.map(e=>e.id)).size} slots`, "ok");
+    render();
+  } catch (ex) {
+    setStatus("failed to load: " + ex.message, "err");
+  }
+}
+
+function slotsOf(entries) {
+  const groups = new Map();
+  for (const e of entries) {
+    if (!groups.has(e.id)) groups.set(e.id, []);
+    groups.get(e.id).push(e);
+  }
+  for (const arr of groups.values()) {
+    arr.sort((a,b) => (b.last_update || "").localeCompare(a.last_update || ""));
+  }
+  return groups;
+}
+
+function matchesFilter(e) {
+  const f = state.filter;
+  if (f.cat && e.category !== f.cat) return false;
+  if (f.ch === "experimental" && e.channel !== "experimental") return false;
+  if (f.ch === "exfat" && !(e.filename || "").toLowerCase().endsWith(".exfat")) return false;
+  if (f.q) {
+    const q = f.q.toLowerCase();
+    const hay = [e.id, e.name, e.filename, e.author, e.description, e.version].join(" ").toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  return true;
+}
+
+function isDirty(e) {
+  const o = state.originalById.get(entryKey(e));
+  if (!o) return false;
+  for (const k of FIELD_ORDER) if ((e[k] ?? "") !== (o[k] ?? "")) return true;
+  return false;
+}
+
+function render() {
+  if (!state.active) return;
+  const groups = slotsOf(state.active.payloads);
+  let shownSlots = 0, shownEntries = 0;
+  const container = el("#slots");
+  container.innerHTML = "";
+  const sortedIds = [...groups.keys()].sort();
+  for (const sid of sortedIds) {
+    const entries = groups.get(sid);
+    const match = entries.filter(matchesFilter);
+    if (!match.length && (state.filter.q || state.filter.cat || state.filter.ch)) continue;
+    shownSlots++;
+    shownEntries += match.length;
+    const latest = entries[0];
+    const slotDirty = entries.some(isDirty);
+    const slotNew = entries.some(e => !state.originalById.has(entryKey(e)));
+    const isExfat = (latest.filename || "").toLowerCase().endsWith(".exfat");
+    const open = state.openSlots.has(sid);
+    container.insertAdjacentHTML("beforeend", `
+      <div class="slot ${open?"open":""} ${slotDirty?"dirty":""} ${slotNew?"new":""}" data-sid="${esc(sid)}">
+        <div class="slot-head" data-toggle>
+          <span class="caret">▶</span>
+          <span class="slot-name">${esc(latest.name)}</span>
+          <span class="slot-id">${esc(sid)}</span>
+          <span class="slot-meta">
+            ${isExfat?'<span class="badge exfat">.exfat</span>':''}
+            <span class="badge cat">${esc(latest.category || "")}</span>
+            ${(latest.min_fw||latest.max_fw)?`<span class="badge fw">${esc(latest.min_fw||"?")}‒${esc(latest.max_fw||"?")}</span>`:""}
+            <span class="badge count">${entries.length}</span>
+          </span>
+        </div>
+        <div class="slot-body">
+          ${entries.map((e,i) => rowHtml(e, i===0)).join("")}
+          <div class="slot-footer">
+            <button class="small" data-addver="${esc(sid)}">+ Add version to slot</button>
+          </div>
+        </div>
+      </div>`);
+  }
+
+  const total = state.active.payloads.length;
+  const slotCount = groups.size;
+  const dirtyCount = state.active.payloads.filter(isDirty).length;
+  const addedCount = state.active.payloads.filter(e => !state.originalById.has(entryKey(e))).length;
+  const removedCount = [...state.originalById.values()].filter(oe => !state.active.payloads.some(e => entryKey(e) === entryKey(oe))).length;
+  const changes = dirtyCount + addedCount + removedCount;
+  const cnt = el("#counts");
+  if (changes > 0) {
+    cnt.className = "counts dirty";
+    cnt.textContent = `${shownEntries}/${total} entries · ${slotCount} slots · ${changes} change${changes===1?"":"s"} unsaved`;
+  } else {
+    cnt.className = "counts";
+    cnt.textContent = `${shownEntries}/${total} entries · ${slotCount} slots`;
+  }
+  el("#exportBtn").disabled = changes === 0;
+}
+
+function rowHtml(e, isLatest) {
+  const dirty = isDirty(e);
+  const isNew = !state.originalById.has(entryKey(e));
+  const latestCls = isLatest && e.channel !== "experimental" ? " latest" : "";
+  const expCls = e.channel === "experimental" ? " exp" : "";
+  return `
+    <div class="version-row${latestCls}${expCls}${dirty?" dirty":""}${isNew?" new":""}">
+      <span class="version-tag">${esc(e.version)}</span>
+      <span class="version-filename">${esc(e.filename)}</span>
+      <span class="version-date">${esc(e.last_update || "")}</span>
+      <span class="version-actions">
+        <button class="small ghost" data-flip="${esc(entryKey(e))}" title="Toggle channel: stable ↔ experimental">
+          ${e.channel === "experimental" ? "⚑ exp" : "☐ stable"}
+        </button>
+      </span>
+      <span class="version-actions">
+        <button class="small" data-edit="${esc(entryKey(e))}">Edit</button>
+        <button class="small danger" data-del="${esc(entryKey(e))}">×</button>
+      </span>
+    </div>`;
+}
+
+function findByKey(k) { return state.active.payloads.find(e => entryKey(e) === k); }
+
+function openEditModal(entryOrSlotId) {
+  const isAdd = typeof entryOrSlotId === "string";
+  let e, orig = null;
+  if (isAdd && entryOrSlotId) {
+    const latest = state.active.payloads.filter(x => x.id === entryOrSlotId)[0];
+    e = latest
+      ? { ...latest, version: "", filename: "", checksum: "", last_update: new Date().toISOString().slice(0,10), channel: "stable", release_notes: "", url: "" }
+      : newBlank();
+    e.id = entryOrSlotId;
+  } else if (isAdd) {
+    e = newBlank();
+  } else {
+    e = { ...entryOrSlotId };
+    orig = entryOrSlotId;
+  }
+  renderModal(e, isAdd, orig);
+}
+
+function newBlank() {
+  return {
+    id: "", name: "", filename: "", url: "", source: "", source_direct: "",
+    author: "", details_url: "", release_notes: "", description: "",
+    last_update: new Date().toISOString().slice(0,10), version: "",
+    category: "Utilities & Tools", channel: "stable",
+    min_fw: "", max_fw: "", checksum: "", icon_key: ""
+  };
+}
+
+function renderModal(e, isAdd, originalEntry) {
+  const m = el("#modal");
+  m.innerHTML = `
+    <h2>${isAdd ? "Add entry" : "Edit entry"}</h2>
+    <div class="row"><label>id<small>slot slug</small></label><input id="f-id" value="${esc(e.id)}" ${(!isAdd || e.id) ? "readonly" : ""}></div>
+    <div class="row"><label>name<small>display</small></label><input id="f-name" value="${esc(e.name)}"></div>
+    <div class="row"><label>version</label><input id="f-version" value="${esc(e.version)}" placeholder="v1.2.3 or 1.2.3"></div>
+    <div class="row"><label>filename</label><input id="f-filename" value="${esc(e.filename)}" placeholder="xxx_v1.2.3.elf or .exfat"></div>
+    <div class="row"><label>url<small>auto from filename</small></label><input id="f-url" value="${esc(e.url)}"></div>
+    <div class="row"><label>sha256</label><input id="f-checksum" value="${esc(e.checksum)}" placeholder="64 hex chars"></div>
+    <div class="row"><label>last_update</label><input id="f-last_update" type="date" value="${esc(e.last_update)}"></div>
+    <div class="row"><label>channel</label><select id="f-channel">${CHANNELS.map(c => `<option value="${c}" ${c===e.channel?"selected":""}>${c}</option>`).join("")}</select></div>
+    <div class="row"><label>category</label><select id="f-category">${CATEGORIES.map(c => `<option value="${esc(c)}" ${c===e.category?"selected":""}>${esc(c)}</option>`).join("")}</select></div>
+    <div class="row"><label>min_fw / max_fw</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><input id="f-min_fw" value="${esc(e.min_fw)}" placeholder="e.g. 1.00"><input id="f-max_fw" value="${esc(e.max_fw)}" placeholder="e.g. 12.70"></div></div>
+    <div class="section-title">Metadata</div>
+    <div class="row"><label>author</label><input id="f-author" value="${esc(e.author)}"></div>
+    <div class="row"><label>source<small>releases page</small></label><input id="f-source" value="${esc(e.source)}"></div>
+    <div class="row"><label>source_direct</label><input id="f-source_direct" value="${esc(e.source_direct)}"></div>
+    <div class="row"><label>details_url</label><input id="f-details_url" value="${esc(e.details_url)}"></div>
+    <div class="row"><label>icon_key</label><input id="f-icon_key" value="${esc(e.icon_key)}"></div>
+    <div class="row full"><label>description</label><textarea id="f-description" rows="2">${esc(e.description)}</textarea></div>
+    <div class="row full"><label>release_notes</label><textarea id="f-release_notes" rows="3">${esc(e.release_notes)}</textarea></div>
+    <div class="footer">
+      ${!isAdd ? '<button class="danger" data-modal-delete>Delete</button>' : ""}
+      <span class="spacer"></span>
+      <button data-modal-cancel>Cancel</button>
+      <button class="primary" data-modal-save>${isAdd ? "Add" : "Save"}</button>
+    </div>
+  `;
+  el("#modalBg").classList.add("open");
+
+  el("#f-filename").addEventListener("input", (ev) => {
+    const fn = ev.target.value;
+    const u = el("#f-url");
+    if (!u.value || u.value.startsWith(BASE_URL + "/")) u.value = fn ? BASE_URL + "/" + fn : "";
+  });
+
+  m.querySelector("[data-modal-cancel]").addEventListener("click", closeModal);
+  m.querySelector("[data-modal-save]").addEventListener("click", () => {
+    const next = {};
+    for (const k of FIELD_ORDER) {
+      const inp = m.querySelector("#f-" + k);
+      if (inp) next[k] = inp.value;
+    }
+    if (!next.id || !next.name || !next.version || !next.filename) {
+      alert("id, name, version, and filename are required");
+      return;
+    }
+    if (next.checksum && !/^[0-9a-fA-F]{64}$/.test(next.checksum)) {
+      if (!confirm("checksum doesn't look like a 64-hex sha256. Save anyway?")) return;
+    }
+    if (next.filename && (!next.url || next.url.startsWith(BASE_URL + "/"))) {
+      next.url = BASE_URL + "/" + next.filename;
+    }
+    if (isAdd) {
+      const dup = state.active.payloads.find(x => x.id === next.id && x.filename.toLowerCase() === next.filename.toLowerCase());
+      if (dup) { alert("Duplicate entry (same slot id + filename case-insensitive)."); return; }
+      state.active.payloads.push(next);
+    } else {
+      const idx = state.active.payloads.findIndex(x => entryKey(x) === entryKey(originalEntry));
+      if (idx >= 0) state.active.payloads[idx] = next;
+    }
+    state.openSlots.add(next.id);
+    closeModal();
+    render();
+  });
+  const delBtn = m.querySelector("[data-modal-delete]");
+  if (delBtn) delBtn.addEventListener("click", () => {
+    if (!confirm(`Delete ${originalEntry.name} ${originalEntry.version}?`)) return;
+    const idx = state.active.payloads.findIndex(x => entryKey(x) === entryKey(originalEntry));
+    if (idx >= 0) state.active.payloads.splice(idx, 1);
+    closeModal();
+    render();
+  });
+}
+
+function closeModal() { el("#modalBg").classList.remove("open"); }
+
+function exportCatalog() {
+  const sorted = [...state.active.payloads].sort((a,b) => {
+    const n = a.name.localeCompare(b.name, undefined, {sensitivity: "base"});
+    if (n) return n;
+    return (b.last_update || "").localeCompare(a.last_update || "");
+  });
+  const v2 = { ...state.active, payloads: sorted };
+  download("payloads_v2.json", JSON.stringify(v2, null, 2));
+  const legacy = [];
+  const seen = new Set();
+  const byDate = [...sorted].sort((a,b) => (b.last_update || "").localeCompare(a.last_update || ""));
+  for (const e of byDate) {
+    if (seen.has(e.id)) continue;
+    seen.add(e.id);
+    const { channel, ...rest } = e;
+    legacy.push(rest);
+  }
+  download("payloads.json", JSON.stringify(legacy, null, 2));
+  setStatus(`Exported ${sorted.length} v2 entries + ${legacy.length} legacy entries. Commit both files to the repo.`, "ok");
+}
+
+function download(name, text) {
+  const blob = new Blob([text], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+document.addEventListener("click", (ev) => {
+  const t = ev.target.closest("[data-toggle], [data-edit], [data-del], [data-flip], [data-addver]");
+  if (!t) return;
+  if (t.dataset.toggle !== undefined) {
+    const slot = t.closest(".slot");
+    const sid = slot.dataset.sid;
+    if (state.openSlots.has(sid)) state.openSlots.delete(sid);
+    else state.openSlots.add(sid);
+    render();
+  } else if (t.dataset.edit) {
+    const e = findByKey(t.dataset.edit);
+    if (e) openEditModal(e);
+  } else if (t.dataset.del) {
+    const e = findByKey(t.dataset.del);
+    if (e && confirm(`Delete ${e.name} ${e.version}?`)) {
+      const idx = state.active.payloads.findIndex(x => entryKey(x) === entryKey(e));
+      if (idx >= 0) state.active.payloads.splice(idx, 1);
+      render();
+    }
+  } else if (t.dataset.flip) {
+    const e = findByKey(t.dataset.flip);
+    if (e) { e.channel = e.channel === "experimental" ? "stable" : "experimental"; render(); }
+  } else if (t.dataset.addver) {
+    openEditModal(t.dataset.addver);
+  }
+});
+
+el("#modalBg").addEventListener("click", (ev) => { if (ev.target === el("#modalBg")) closeModal(); });
+document.addEventListener("keydown", (ev) => { if (ev.key === "Escape") closeModal(); });
+
+el("#loadBtn").addEventListener("click", load);
+el("#exportBtn").addEventListener("click", exportCatalog);
+el("#addSlotBtn").addEventListener("click", () => openEditModal(""));
+el("#search").addEventListener("input", (ev) => { state.filter.q = ev.target.value; render(); });
+
+for (const c of els(".chip")) {
+  c.addEventListener("click", () => {
+    if (c.dataset.cat !== undefined) {
+      els(".chip[data-cat]").forEach(x => x.classList.remove("active"));
+      c.classList.add("active");
+      state.filter.cat = c.dataset.cat;
+    } else if (c.dataset.ch) {
+      els(".chip[data-ch]").forEach(x => { if (x !== c) x.classList.remove("active"); });
+      c.classList.toggle("active");
+      state.filter.ch = c.classList.contains("active") ? c.dataset.ch : "";
+    }
+    render();
+  });
+}
+el('.chip[data-cat=""]').classList.add("active");
+
+el("#themeToggle").addEventListener("click", () => {
+  const cur = document.documentElement.dataset.theme;
+  const next = cur === "light" ? "dark" : (cur === "dark" ? "" : "light");
+  if (next) document.documentElement.dataset.theme = next;
+  else delete document.documentElement.dataset.theme;
+  try { localStorage.setItem("admin_theme", next || ""); } catch {}
+});
+try {
+  const saved = localStorage.getItem("admin_theme");
+  if (saved) document.documentElement.dataset.theme = saved;
+} catch {}
+
+window.addEventListener("beforeunload", (ev) => {
+  if (!state.active) return;
+  const dirty = state.active.payloads.some(isDirty);
+  const added = state.active.payloads.some(e => !state.originalById.has(entryKey(e)));
+  const removed = [...state.originalById.values()].some(oe => !state.active.payloads.some(e => entryKey(e) === entryKey(oe)));
+  if (dirty || added || removed) { ev.preventDefault(); return (ev.returnValue = ""); }
+});
+
+load();
+</script>
+</body>
+</html>
