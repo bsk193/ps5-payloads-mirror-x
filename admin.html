@@ -233,6 +233,7 @@ main { padding: 20px; max-width: 1400px; margin: 0 auto; }
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.version-name { color: var(--fg); font-weight: 500; font-family: inherit; }
 .version-date { color: var(--fg-faint); font-size: 11px; font-variant-numeric: tabular-nums; }
 .version-actions { display: flex; gap: 4px; }
 .slot-footer {
@@ -502,10 +503,11 @@ function rowHtml(e, isLatest) {
   const isNew = !state.originalById.has(entryKey(e));
   const latestCls = isLatest && e.channel !== "experimental" ? " latest" : "";
   const expCls = e.channel === "experimental" ? " exp" : "";
+  const nameLabel = e.name && e.name.trim() ? ` · <span class="version-name">${esc(e.name)}</span>` : "";
   return `
     <div class="version-row${latestCls}${expCls}${dirty?" dirty":""}${isNew?" new":""}">
       <span class="version-tag">${esc(e.version)}</span>
-      <span class="version-filename">${esc(e.filename)}</span>
+      <span class="version-filename">${esc(e.filename)}${nameLabel}</span>
       <span class="version-date">${esc(e.last_update || "")}</span>
       <span class="version-actions">
         <button class="small ghost" data-flip="${esc(entryKey(e))}" title="Toggle channel: stable ↔ experimental">
@@ -606,10 +608,22 @@ function renderModal(e, isAdd, originalEntry) {
     if (isAdd) {
       const dup = state.active.payloads.find(x => x.id === next.id && x.filename.toLowerCase() === next.filename.toLowerCase());
       if (dup) { alert("Duplicate entry (same slot id + filename case-insensitive)."); return; }
+      // Name is slot-level: reuse the slot's existing display name if present
+      const slotMate = state.active.payloads.find(x => x.id === next.id);
+      if (slotMate && slotMate.name && slotMate.name !== next.name) next.name = slotMate.name;
       state.active.payloads.push(next);
     } else {
       const idx = state.active.payloads.findIndex(x => entryKey(x) === entryKey(originalEntry));
       if (idx >= 0) state.active.payloads[idx] = next;
+      // Name/category/author are slot-level: ripple changes to every other entry of the slot.
+      // For truly slot-level fields, ripple unconditionally so renaming once renames the whole slot.
+      const SLOT_LEVEL = ["name", "category", "author", "source", "details_url", "description"];
+      for (const k of SLOT_LEVEL) {
+        if ((next[k] ?? "") === (originalEntry[k] ?? "")) continue;
+        for (const p of state.active.payloads) {
+          if (p.id === next.id && entryKey(p) !== entryKey(next)) p[k] = next[k];
+        }
+      }
     }
     state.openSlots.add(next.id);
     closeModal();
