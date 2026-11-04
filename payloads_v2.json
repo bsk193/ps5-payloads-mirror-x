@@ -669,7 +669,7 @@
       "url": "https://github.com/bsk193/etaHEN-mirror/releases/download/2.6B/etaHEN_2.6B.bin",
       "source": "https://github.com/etaHEN/etaHEN/releases",
       "source_direct": "",
-      "author": "etaHEN",
+      "author": "community (unofficial, hosted by bsk193)",
       "details_url": "https://github.com/bsk193/etaHEN-mirror/releases/tag/2.6B",
       "release_notes": "Unofficial / community build \u2014 not in upstream's release feed. Supplied by mirror maintainer after 2.6B went missing upstream.",
       "description": "AIO HEN payload",
