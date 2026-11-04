@@ -1,5 +1,24 @@
 [
   {
+    "id": "etahen",
+    "name": "etaHEN",
+    "filename": "etaHEN_2.6B.bin",
+    "url": "https://github.com/bsk193/etaHEN-mirror/releases/download/2.6B/etaHEN_2.6B.bin",
+    "source": "https://github.com/etaHEN/etaHEN/releases",
+    "source_direct": "",
+    "author": "etaHEN",
+    "details_url": "https://github.com/bsk193/etaHEN-mirror/releases/tag/2.6B",
+    "release_notes": "Unofficial / community build \u2014 not in upstream's release feed. Supplied by mirror maintainer after 2.6B went missing upstream.",
+    "description": "AIO HEN payload",
+    "last_update": "2026-11-04",
+    "version": "2.6B",
+    "category": "System & Jailbreak",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "8ce5ab4eaff10679920bf7397bb081ca9c18aa159d134cae8f1af3a4290b91b6",
+    "icon_key": "6f211e808fe2ea7408186264fe3c7afe5f0d69b236bcb7d697f2ca48a8ddebcd"
+  },
+  {
     "id": "pldmgrx",
     "name": "Payload Manager X",
     "filename": "pldmgrx_v1.1.2.elf",
