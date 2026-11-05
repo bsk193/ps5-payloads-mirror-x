@@ -4143,6 +4143,26 @@
       "icon_key": ""
     },
     {
+      "id": "webkit-autoloader-x",
+      "name": "WebKit Autoloader X Installer",
+      "filename": "webkit-autoloader-x-installer_v1.2.3_ps5.elf",
+      "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/webkit-autoloader-x-installer_v1.2.3_ps5.elf",
+      "source": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+      "source_direct": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases/download/x-v1.2.3/webkit-autoloader-x-installer_v1.2.3_ps5.elf",
+      "author": "bsk193",
+      "details_url": "https://github.com/bsk193/ps5-webkit-autoloader-x/releases",
+      "release_notes": "**WebKit Autoloader X 1.2.3**, based on [WebKit Autoloader v0.6.2](https://github.com/itsPLK/ps5-webkit-autoloader/releases/tag/v0.6.2) by PLK.",
+      "description": "PS5 WebKit exploit autoloader X installer ELF by bsk193.",
+      "last_update": "2026-11-05",
+      "version": "1.2.3",
+      "category": "Loaders",
+      "channel": "stable",
+      "min_fw": "",
+      "max_fw": "",
+      "checksum": "8bd9dc51aa5c6bda5cf4d429c350c263b8e4537254d64bf3cba1c84c82289f8d",
+      "icon_key": ""
+    },
+    {
       "id": "websrv",
       "name": "websrv",
       "filename": "FBNeo_v0.25.elf",
@@ -4300,6 +4320,26 @@
       "min_fw": "",
       "max_fw": "",
       "checksum": "ff5f974a32cd8a754baab297c7e5d5459a8b02908752486440588a03713b1364",
+      "icon_key": ""
+    },
+    {
+      "id": "y2jb-x-updater",
+      "name": "Y2JB Autoloader X Updater",
+      "filename": "y2jb-x-updater_v1.1.3_ps5.elf",
+      "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/y2jb-x-updater_v1.1.3_ps5.elf",
+      "source": "https://github.com/bsk193/ps5-y2jb-autoloader-x/releases",
+      "source_direct": "https://github.com/bsk193/ps5-y2jb-autoloader-x/releases/download/x-v1.1.3/y2jb-x-updater_v1.1.3_ps5.elf",
+      "author": "bsk193",
+      "details_url": "https://github.com/bsk193/ps5-y2jb-autoloader-x/releases",
+      "release_notes": "**Y2JB Autoloader X 1.1.3**, based on [Y2JB Autoloader v1.1.0](https://github.com/itsPLK/ps5-y2jb-autoloader/releases) by PLK.\nLoads [Payload Manager X](https://github.com/bsk193/ps5-payload-manager-x) (port 8084) instead of the official Payload Manager.",
+      "description": "Installs or updates Y2JB Autoloader X without FTP: opens the PS5 browser, shows each YouTube region (PPSA01650 US / PPSA01651 EU / PPSA01652 JP) and what it has now, then downloads the latest download0.dat into the one you pick.",
+      "last_update": "2026-11-05",
+      "version": "1.1.3",
+      "category": "Loaders",
+      "channel": "stable",
+      "min_fw": "",
+      "max_fw": "",
+      "checksum": "decd8f98449b7f2aa3b2daaae9d0d9a6df8a77de15eda4af00197588221a070f",
       "icon_key": ""
     },
     {
