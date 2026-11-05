@@ -1843,6 +1843,26 @@
       "icon_key": ""
     },
     {
+      "id": "pldmgrx",
+      "name": "Payload Manager X",
+      "filename": "pldmgrx_v1.1.5.elf",
+      "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/pldmgrx_v1.1.5.elf",
+      "source": "https://github.com/bsk193/ps5-payload-manager-x/releases",
+      "source_direct": "https://github.com/bsk193/ps5-payload-manager-x/releases/download/x-v1.1.5/pldmgrx_v1.1.5.elf",
+      "author": "bsk193",
+      "details_url": "https://github.com/bsk193/ps5-payload-manager-x",
+      "release_notes": "**PS5 Payload Manager X 1.1.5**, based on [itsPLK v0.6.3](https://github.com/itsPLK/ps5-payload-manager/releases/tag/v0.6.3).",
+      "description": "A modern, web-based dashboard to easily manage, import, and automatically load payloads on your PS5 (bsk193's fork with Payload Manager X features).",
+      "last_update": "2026-11-05",
+      "version": "1.1.5",
+      "category": "Loaders",
+      "channel": "stable",
+      "min_fw": "",
+      "max_fw": "",
+      "checksum": "b3466551464b9cb3535a05d86cd1a4dee854204f8e5a675363d9316fee7d7da3",
+      "icon_key": ""
+    },
+    {
       "id": "pegasusdl",
       "name": "PegasusDL",
       "filename": "pegasus_dl_v1.7.0.elf",
