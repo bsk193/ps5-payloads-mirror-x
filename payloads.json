@@ -877,7 +877,7 @@
     "id": "kstuff-lite-dr",
     "name": "KStuff Lite Drakmor",
     "filename": "kstuff_1.2-dr-test2.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/kstuff_1.2-dr-test2.elf",
+    "url": "https://github.com/bsk193/drakmor-kstuff-mirror/releases/download/1.2-dr-test2/kstuff_1.2-dr-test2.elf",
     "source": "https://github.com/drakmor/kstuff-lite/releases",
     "source_direct": "",
     "author": "drakmor",

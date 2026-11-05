@@ -42,6 +42,11 @@ SKIP_SLOTS = {
     # Jobee's Lair is a .exfat homebrew install, not a release-asset flow;
     # the catalog row is maintained by hand.
     "jobeeslair": ".exfat homebrew path; not a standard release bump",
+    # Drakmor's KStuff Lite is mirrored from a dedicated repo so that
+    # Discord-only builds can be hosted alongside the GitHub ones; the
+    # scanner would race the mirror. Bumps happen when a human adds a
+    # new release to the mirror.
+    "kstuff-lite-dr": "mirrored via bsk193/drakmor-kstuff-mirror; bump manually when mirror gains a release",
 }
 
 # Match github.com HTTP URLs: https://github.com/<owner>/<repo>[/...]
