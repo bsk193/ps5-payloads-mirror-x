@@ -1863,6 +1863,26 @@
       "icon_key": ""
     },
     {
+      "id": "pegasusdl",
+      "name": "PegasusDL",
+      "filename": "PPSA99998.ffpfsc",
+      "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/PPSA99998.ffpfsc",
+      "source": "https://github.com/pegasus-ps5/pegasus-dl/releases",
+      "source_direct": "https://github.com/pegasus-ps5/pegasus-dl/releases/download/native-v2.0.5/PPSA99998.ffpfsc",
+      "author": "pegasus-ps5",
+      "details_url": "https://github.com/pegasus-ps5/pegasus-dl/releases",
+      "release_notes": "- Added a virtual keyboard for text fields in the built-in browser.\n- Fixed WebKit integration issues to improve browser compatibility on older firmwares.",
+      "description": "",
+      "last_update": "2026-10-26",
+      "version": "native-v2.0.5",
+      "category": "Utilities & Tools",
+      "channel": "stable",
+      "min_fw": "",
+      "max_fw": "",
+      "checksum": "a533e183cd015249276e8b750ab30b0e734d678e74b0c8324e9776a4aa91be6e",
+      "icon_key": ""
+    },
+    {
       "id": "pkg-manager",
       "name": "PKG-Manager",
       "filename": "pkgmgr_v1.0.0.elf",

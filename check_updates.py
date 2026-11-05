@@ -42,13 +42,6 @@ SKIP_SLOTS = {
     # Jobee's Lair is a .exfat homebrew install, not a release-asset flow;
     # the catalog row is maintained by hand.
     "jobeeslair": ".exfat homebrew path; not a standard release bump",
-    # pegasusdl switched from a .elf payload to a native-pkg artifact
-    # (native-release.json + .sig + PPSA99998.ffpfsc + SHA256SUMS) at
-    # native-v2.x. The catalog row only models .elf/.bin payloads, so the
-    # scanner can't bump this slot automatically any more. A human decides
-    # whether to carry the native pkg via a different distribution path,
-    # or pin pegasusdl to its last .elf release (v1.7.0).
-    "pegasusdl": "upstream v2.x changed format to native pkg (.ffpfsc); no .elf asset",
 }
 
 # Match github.com HTTP URLs: https://github.com/<owner>/<repo>[/...]
