@@ -192,6 +192,27 @@ def sort_v1(payloads: list) -> list:
     return sorted(payloads, key=lambda e: e.get("last_update", ""), reverse=True)
 
 
+def check_filename_collision(v2: dict, v1: list, slot_id: str, mirror_filename: str) -> None:
+    """Refuse the operation if any OTHER slot already uses this mirror filename.
+
+    A `gh release upload --clobber` to the mirror release would otherwise
+    silently overwrite the other slot's bytes, leaving that slot's catalog row
+    pointing at a URL whose contents now belong to this slot. Scans both v2
+    (every version row) and v1 (stable tips) so a stale v1 entry we never
+    migrated to v2 is still caught.
+    """
+    conflicts = set()
+    for p in v2.get("payloads", []):
+        if p.get("filename") == mirror_filename and p.get("id") != slot_id:
+            conflicts.add(p.get("id"))
+    for p in v1:
+        if p.get("filename") == mirror_filename and p.get("id") != slot_id:
+            conflicts.add(p.get("id"))
+    if conflicts:
+        sys.exit(f"ERROR: mirror filename {mirror_filename!r} is already used by slot(s) {sorted(conflicts)}. "
+                 f"Pick a unique name via --mirror-filename (e.g. {slot_id}-{mirror_filename}) to avoid clobbering the other slot's asset on the mirror release.")
+
+
 def cmd_bump(args: argparse.Namespace) -> None:
     v2 = json.loads(V2_PATH.read_text())
     v1 = json.loads(V1_PATH.read_text())
@@ -222,6 +243,9 @@ def cmd_bump(args: argparse.Namespace) -> None:
         print(f"  size={actual_size} sha256={checksum[:12]}...", file=sys.stderr)
 
         row = build_row(args, release, asset, template, checksum)
+
+        if not args.no_upload:
+            check_filename_collision(v2, v1, args.slot, row["filename"])
 
         if args.dry_run:
             print(json.dumps(row, indent=2))
@@ -300,6 +324,9 @@ def cmd_new(args: argparse.Namespace) -> None:
             "checksum": checksum,
             "icon_key": args.icon_key or "",
         }
+
+        if not args.no_upload:
+            check_filename_collision(v2, v1, args.slot, row["filename"])
 
         if args.dry_run:
             print(json.dumps(row, indent=2))
