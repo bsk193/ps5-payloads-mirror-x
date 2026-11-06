@@ -1,5 +1,24 @@
 [
   {
+    "id": "jobeeslair",
+    "name": "Jobee's Lair",
+    "filename": "JobeesLair_v0.5.6.exfat",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/JobeesLair_v0.5.6.exfat",
+    "source": "https://github.com/JVK3R/JobeesLair/releases",
+    "source_direct": "https://github.com/JVK3R/JobeesLair/releases/download/v0.5.6/JobeesLair.exfat",
+    "author": "JVK3R",
+    "details_url": "https://github.com/JVK3R/JobeesLair",
+    "release_notes": "Big 7z archives unpack now, downloads pick up where they stopped, and drives are recognised properly.",
+    "description": "Standalone, content-neutral PS5 homebrew indexer and media framework (open-source homebrew download manager, title ID PPSA99471).",
+    "last_update": "2026-11-06",
+    "version": "0.5.6",
+    "category": "Utilities & Tools",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "54504a4b73160a2c439dc44d57162fb1517c2890a12f4929e2e6ad47b414f6ea",
+    "icon_key": ""
+  },
+  {
     "id": "pldmgrx",
     "name": "Payload Manager X",
     "filename": "pldmgrx_v1.1.5.elf",
@@ -149,25 +168,6 @@
     "min_fw": "10.00",
     "max_fw": "13.60",
     "checksum": "03a8f761e1ef8a4702be0818b55b9dc37361e3c4d515bc52fd59e19c2b130d49",
-    "icon_key": ""
-  },
-  {
-    "id": "jobeeslair",
-    "name": "Jobee's Lair",
-    "filename": "JobeesLair.exfat",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/JobeesLair.exfat",
-    "source": "https://github.com/JVK3R/JobeesLair/releases",
-    "source_direct": "https://github.com/JVK3R/JobeesLair/releases/download/v0.5.5/JobeesLair.exfat",
-    "author": "JVK3R",
-    "details_url": "https://github.com/JVK3R/JobeesLair",
-    "release_notes": "",
-    "description": "Standalone, content-neutral PS5 homebrew indexer and media framework (open-source homebrew download manager, title ID PPSA99471).",
-    "last_update": "2026-11-02",
-    "version": "v0.5.5",
-    "category": "Utilities & Tools",
-    "min_fw": "",
-    "max_fw": "",
-    "checksum": "3ecb24c278453b12f5de382fe1a06804e749c404e60ad15b795cde4d193026eb",
     "icon_key": ""
   },
   {
