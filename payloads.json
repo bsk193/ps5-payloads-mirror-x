@@ -1,5 +1,24 @@
 [
   {
+    "id": "ps5-dump-forge",
+    "name": "PS5 Dump Forge",
+    "filename": "ps5-dump-forge-0.5.7-ps5.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/ps5-dump-forge-0.5.7-ps5.elf",
+    "source": "https://github.com/quer3q/ps5-dump-forge/releases",
+    "source_direct": "https://github.com/quer3q/ps5-dump-forge/releases/download/v0.5.7/ps5-dump-forge-0.5.7-ps5.elf",
+    "author": "quer3q",
+    "details_url": "https://github.com/quer3q/ps5-dump-forge/releases",
+    "release_notes": "## New",
+    "description": "A toolkit for working with PS5 game dumps",
+    "last_update": "2026-11-22",
+    "version": "0.5.7",
+    "category": "Utilities & Tools",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "83a7e82a9070a671953d96e4acfc909697505281e4a023a2c6411316c2c1ce6c",
+    "icon_key": "5ab5a0df9580b7ed460face021e302fe2c4496183699aeffc891232046288261"
+  },
+  {
     "id": "webkit-autoloader-x",
     "name": "WebKit Autoloader X Installer",
     "filename": "webkit-autoloader-x-installer_v1.3.1_ps5.elf",
@@ -131,25 +150,6 @@
     "max_fw": "",
     "checksum": "c0506bd055820a199ddae59a475686fdcf6f832f94594870ba41cee9b3fce1be",
     "icon_key": "faacbcbeedaf4e72af5398f611d4d5ff788dfddf8d4080b500492e6cf55cc35d"
-  },
-  {
-    "id": "ps5-dump-forge",
-    "name": "PS5 Dump Forge",
-    "filename": "ps5-dump-forge-0.5.2-ps5.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/ps5-dump-forge-0.5.2-ps5.elf",
-    "source": "https://github.com/quer3q/ps5-dump-forge/releases",
-    "source_direct": "https://github.com/quer3q/ps5-dump-forge/releases/download/v0.5.2/ps5-dump-forge-0.5.2-ps5.elf",
-    "author": "quer3q",
-    "details_url": "https://github.com/quer3q/ps5-dump-forge/releases",
-    "release_notes": "## New\r\n\r\n- **ampr-emu-ng v0.2.0.** The bundled ampr-emu-ng is now its v0.2.0 release. Games carrying v0.1.0 are still recognized. The AMPR tile shows the runtime and its version.\r\n- **Custom packing rules.** zstd and LZ4 Pack take a TOML profile that decides which files are packed and which stay loose: the Pack tab's Custom rules fold, or CLI `--pack-profile`. The file can be on this device, a paired device or a saved NAS. See `docs/packing.md`.\r\n- **Smarter built-in packing.** Protected and video folders match in any case, Insomniac's sound and movie containers stay loose, and the job log says why each group of files stays loose.\r\n\r\n## Fixes\r\n\r\n- Much faster with many small files: inspecting Gran Turismo 7 (95,382 files) on Windows went from 185-430 s to 4-5 s, and folder outputs write small files on 4 threads.\r\n- A folder output writes `sce_sys/` and `eboot.bin` last, so ShadowMount+ never finds a half-written game.\r\n- A packed game whose packs also hold a file that is on disk (LZ4 or zstd) is no longer refused: an identical copy keeps the plain file, otherwise the packed copy is used.\r\n\r\n## Thanks\r\n\r\n- @LuanQuanzTeixeira made their first contribution in #17: scanned files are opened for their attributes only on Windows, behind the much faster inspection above.",
-    "description": "A toolkit for working with PS5 game dumps",
-    "last_update": "2026-11-03",
-    "version": "0.5.2",
-    "category": "Utilities & Tools",
-    "min_fw": "",
-    "max_fw": "",
-    "checksum": "140b4a8625b42af25acf8ff2c454c06c1182866960f18a0f4b04d57a380a5589",
-    "icon_key": "5ab5a0df9580b7ed460face021e302fe2c4496183699aeffc891232046288261"
   },
   {
     "id": "ps5-linux-loader-pro",
