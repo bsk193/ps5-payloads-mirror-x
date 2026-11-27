@@ -123,13 +123,19 @@ def sha256_of(path: Path) -> str:
     return h.hexdigest()
 
 
-def pick_asset(release: dict, want_name: str | None) -> dict:
+def pick_asset(release: dict, want_name: str | None, prefer_ext: str | None = None) -> dict:
     assets = release.get("assets", [])
     if want_name:
         for a in assets:
             if a["name"] == want_name:
                 return a
         sys.exit(f"ERROR: asset {want_name!r} not found in release; available: {[a['name'] for a in assets]}")
+    # Releases often ship an updater .zip or desktop builds next to the real
+    # payload, so stick with the extension the slot already uses.
+    if prefer_ext in ALLOWED_EXTS:
+        for a in assets:
+            if a["name"].lower().endswith(prefer_ext):
+                return a
     # Default: first match in ALLOWED_EXTS priority order (case-insensitive).
     for suffix in ALLOWED_EXTS:
         for a in assets:
@@ -219,8 +225,17 @@ def cmd_bump(args: argparse.Namespace) -> None:
 
     template = load_slot_template(v2, args.slot)
     release = gh_release_view(args.source_repo, args.tag)
-    asset = pick_asset(release, args.asset)
+    asset = pick_asset(release, args.asset, Path(template.get("filename", "")).suffix.lower() or None)
     version = args.version or strip_version_prefix(release["tagName"])
+
+    # Upstreams that reuse one bare filename across versions would overwrite
+    # the older row's mirror bytes, so give the new upload a versioned name.
+    if not args.mirror_filename and any(
+        p.get("id") == args.slot and p.get("filename") == asset["name"] for p in v2["payloads"]
+    ):
+        stem, ext = Path(asset["name"]).stem, Path(asset["name"]).suffix
+        args.mirror_filename = f"{stem}_v{version}{ext}"
+        print(f"  mirror filename {asset['name']!r} already used in slot; uploading as {args.mirror_filename!r}", file=sys.stderr)
 
     if asset.get("size", 0) > MAX_PAYLOAD_SIZE:
         sys.exit(f"ERROR: asset {asset['name']!r} is {asset['size']} bytes, exceeds the {MAX_PAYLOAD_SIZE}-byte cap. Refusing to mirror a game-sized artifact.")

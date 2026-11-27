@@ -1,0 +1,75 @@
+name: Check for updates
+
+on:
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: "Only check this slot id (leave blank for every slot)"
+        required: false
+        default: ""
+      dry_run:
+        description: "Only report what's out of date, don't bump anything"
+        type: boolean
+        default: false
+      include_prerelease:
+        description: "Also take upstream pre-releases (added as experimental)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: catalog-update
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan upstreams and bump
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SLOT: ${{ inputs.slot }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          PRE: ${{ inputs.include_prerelease }}
+        run: |
+          args=()
+          [ -n "$SLOT" ] && args+=(--slot "$SLOT")
+          [ "$PRE" = "true" ] && args+=(--include-prerelease)
+          [ "$DRY_RUN" != "true" ] && args+=(--apply --yes)
+          set +e
+          python3 check_updates.py "${args[@]}" 2>&1 | tee scan.log
+          echo "SCAN_STATUS=${PIPESTATUS[0]}" >> "$GITHUB_ENV"
+          { echo '```'; cat scan.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit catalog changes
+        if: ${{ !inputs.dry_run }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- payloads.json payloads_v2.json; then
+            echo "No catalog changes."
+            exit 0
+          fi
+          {
+            echo "Catalog: upstream updates (manual check)"
+            echo
+            grep -E '^  UPDATE' scan.log | sed 's/^  UPDATE  /- /' || true
+          } > msg.txt
+          git add payloads.json payloads_v2.json
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -F msg.txt
+          git pull --rebase origin main
+          git push origin HEAD:main
+          gh api -X POST "repos/${GITHUB_REPOSITORY}/pages/builds" >/dev/null || echo "Pages rebuild request failed; the push will still deploy."
+
+      - name: Fail if any bump failed
+        if: ${{ env.SCAN_STATUS != '0' }}
+        run: |
+          echo "One or more slots failed to bump; see the log above."
+          exit 1
