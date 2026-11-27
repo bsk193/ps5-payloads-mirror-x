@@ -27,7 +27,7 @@
     "source_direct": "https://github.com/ZiZc3/VI-Patch/releases/download/v1.4/vi-patch.elf",
     "author": "ZiZc3",
     "details_url": "https://github.com/ZiZc3/VI-Patch",
-    "release_notes": "## Patches",
+    "release_notes": "Adds 1080p, No lens flare and Close game fix (by Eizovoid). Choose patches in /data/vi-patch/vipatch.txt.",
     "description": "Patches for Grand Theft Auto VI (PPSA38500 v01.002.001): 60 FPS, 1080p, weather fix, close game fix, first person and more. Send before starting the game; choose patches in /data/vi-patch/vipatch.txt.",
     "last_update": "2026-11-27",
     "version": "1.4",
