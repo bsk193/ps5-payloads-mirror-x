@@ -225,7 +225,13 @@ def cmd_bump(args: argparse.Namespace) -> None:
 
     template = load_slot_template(v2, args.slot)
     release = gh_release_view(args.source_repo, args.tag)
-    asset = pick_asset(release, args.asset, Path(template.get("filename", "")).suffix.lower() or None)
+    # Multi-platform releases (PS4 orbis + PS5 prospero) share an extension, so
+    # first try the exact upstream filename the slot's current row came from.
+    want = args.asset
+    prev_up = template.get("source_direct", "").rsplit("/", 1)[-1]
+    if not want and prev_up and any(x["name"] == prev_up for x in release.get("assets", [])):
+        want = prev_up
+    asset = pick_asset(release, want, Path(template.get("filename", "")).suffix.lower() or None)
     version = args.version or strip_version_prefix(release["tagName"])
 
     # Upstreams that reuse one bare filename across versions would overwrite
