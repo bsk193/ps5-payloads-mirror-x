@@ -1083,6 +1083,26 @@
       "icon_key": "2cc3ca2be798749bb50ba4dc2afcb00a321542352e95087aa89b0e53c9b3e2ed"
     },
     {
+      "id": "gta6-fps-unlocker",
+      "name": "GTA VI FPS Unlocker",
+      "filename": "GTAVI.UnlockFPS_v1.15.elf",
+      "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/GTAVI.UnlockFPS_v1.15.elf",
+      "source": "https://github.com/HSgod/ps5-fpsunlocker-gta6/releases",
+      "source_direct": "https://github.com/HSgod/ps5-fpsunlocker-gta6/releases/download/v1.15/GTAVI.UnlockFPS_v1.15.elf",
+      "author": "HSgod",
+      "details_url": "https://github.com/HSgod/ps5-fpsunlocker-gta6",
+      "release_notes": "Adds 120 Hz flip-rate support (clean 40 FPS lock at 120 Hz), an experimental output resolution override (1440p/1080p), and an experimental PS5 Pro half-res RT reflections option. Settings go in fps.txt.",
+      "description": "Unlocks the frame rate in Grand Theft Auto VI on a jailbroken PS5.",
+      "last_update": "2026-11-27",
+      "version": "1.15",
+      "category": "Utilities & Tools",
+      "channel": "stable",
+      "min_fw": "",
+      "max_fw": "",
+      "checksum": "09258095452838e6e38e2e5301dc534eb215f48e1288e1a980b555d1e82eb48b",
+      "icon_key": ""
+    },
+    {
       "id": "jobeeslair",
       "name": "Jobee's Lair",
       "filename": "JobeesLair.exfat",
@@ -1460,6 +1480,26 @@
       "min_fw": "",
       "max_fw": "",
       "checksum": "221fa41c43597677c1153d5224174be9062105c0c9a3379e96cb45d278aa52fc",
+      "icon_key": ""
+    },
+    {
+      "id": "kstuff-lite-dr",
+      "name": "KStuff Lite Drakmor",
+      "filename": "kstuff-1.15-dr-test3.elf",
+      "url": "https://github.com/bsk193/drakmor-kstuff-mirror/releases/download/1.15-dr-test3/kstuff-1.15-dr-test3.elf",
+      "source": "https://github.com/drakmor/kstuff-lite/releases",
+      "source_direct": "",
+      "author": "drakmor",
+      "details_url": "https://github.com/drakmor/kstuff-lite/releases",
+      "release_notes": "Discord-only test3 build of 1.15. Not published on upstream GitHub.",
+      "description": "",
+      "last_update": "2026-11-27",
+      "version": "1.15-dr-test3",
+      "category": "System & Jailbreak",
+      "channel": "experimental",
+      "min_fw": "",
+      "max_fw": "",
+      "checksum": "1139fcae59e6094de0fc2a78352af4fa70542d17d057e2935d154c530d4a790a",
       "icon_key": ""
     },
     {
@@ -2001,6 +2041,26 @@
       "max_fw": "",
       "checksum": "82e3548edcc41419b644482cccaef65689334fc0315dc20247f48b90bf182dca",
       "icon_key": "cf00f6f4c5d15c190c59cce408f0eae1da80b0f8bd5a3a1cdc28be9a7aacd2db"
+    },
+    {
+      "id": "prefbar",
+      "name": "PrefBar",
+      "filename": "Prefbar_V0.3.1.elf",
+      "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/Prefbar_V0.3.1.elf",
+      "source": "https://github.com/X1NONs/PrefBar/releases",
+      "source_direct": "https://github.com/X1NONs/PrefBar/releases/download/v0.3.1/Prefbar_V0.3.1.elf",
+      "author": "X1NONs",
+      "details_url": "https://github.com/X1NONs/PrefBar",
+      "release_notes": "New built-in web control center: adjust overlay colors, font size, position, layout and spacing from a browser on the same network, with live preview. Manual .conf editing still works.",
+      "description": "Standalone PS5 performance overlay.",
+      "last_update": "2026-11-24",
+      "version": "0.3.1",
+      "category": "Utilities & Tools",
+      "channel": "stable",
+      "min_fw": "",
+      "max_fw": "",
+      "checksum": "b876836d4597e28e519ae6bc80df0eeceefde2e8648491c66d4983a779dff134",
+      "icon_key": ""
     },
     {
       "id": "prosperomgr",
@@ -4541,6 +4601,26 @@
       "max_fw": "",
       "checksum": "8f78ac0cde64a0744b82663d4a6bf8c1d7e937876dceddc219a21164578bd96e",
       "icon_key": "bd943d614d5d000c34a8bd4e1c00df0bbb9881907accaabe58aab384711abb6c"
+    },
+    {
+      "id": "a53-ppr",
+      "name": "A53 PPR",
+      "filename": "a53-ppr-v20.09.elf",
+      "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/a53-ppr-v20.09.elf",
+      "source": "",
+      "source_direct": "",
+      "author": "",
+      "details_url": "",
+      "release_notes": "",
+      "description": "A53 PPR payload for PS5 firmware 11.60.",
+      "last_update": "2026-09-20",
+      "version": "v20.09",
+      "category": "Utilities & Tools",
+      "channel": "stable",
+      "min_fw": "11.60",
+      "max_fw": "",
+      "checksum": "984be03548aa849bcd06757acbed5575a3764532d858f4afaaa243b9f2a08bbf",
+      "icon_key": ""
     }
   ]
 }

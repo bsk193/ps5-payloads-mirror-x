@@ -11,8 +11,8 @@ on:
         description: "Only report what's out of date, don't bump anything"
         type: boolean
         default: false
-      include_prerelease:
-        description: "Also take upstream pre-releases (added as experimental)"
+      stable_only:
+        description: "Skip upstream pre-releases (by default they're added as experimental)"
         type: boolean
         default: false
 
@@ -35,11 +35,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           SLOT: ${{ inputs.slot }}
           DRY_RUN: ${{ inputs.dry_run }}
-          PRE: ${{ inputs.include_prerelease }}
+          STABLE_ONLY: ${{ inputs.stable_only }}
         run: |
           args=()
           [ -n "$SLOT" ] && args+=(--slot "$SLOT")
-          [ "$PRE" = "true" ] && args+=(--include-prerelease)
+          [ "$STABLE_ONLY" = "true" ] && args+=(--stable-only)
           [ "$DRY_RUN" != "true" ] && args+=(--apply --yes)
           set +e
           python3 check_updates.py "${args[@]}" 2>&1 | tee scan.log

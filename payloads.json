@@ -1,5 +1,43 @@
 [
   {
+    "id": "gta6-fps-unlocker",
+    "name": "GTA VI FPS Unlocker",
+    "filename": "GTAVI.UnlockFPS_v1.15.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/GTAVI.UnlockFPS_v1.15.elf",
+    "source": "https://github.com/HSgod/ps5-fpsunlocker-gta6/releases",
+    "source_direct": "https://github.com/HSgod/ps5-fpsunlocker-gta6/releases/download/v1.15/GTAVI.UnlockFPS_v1.15.elf",
+    "author": "HSgod",
+    "details_url": "https://github.com/HSgod/ps5-fpsunlocker-gta6",
+    "release_notes": "Adds 120 Hz flip-rate support (clean 40 FPS lock at 120 Hz), an experimental output resolution override (1440p/1080p), and an experimental PS5 Pro half-res RT reflections option. Settings go in fps.txt.",
+    "description": "Unlocks the frame rate in Grand Theft Auto VI on a jailbroken PS5.",
+    "last_update": "2026-11-27",
+    "version": "1.15",
+    "category": "Utilities & Tools",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "09258095452838e6e38e2e5301dc534eb215f48e1288e1a980b555d1e82eb48b",
+    "icon_key": ""
+  },
+  {
+    "id": "prefbar",
+    "name": "PrefBar",
+    "filename": "Prefbar_V0.3.1.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/Prefbar_V0.3.1.elf",
+    "source": "https://github.com/X1NONs/PrefBar/releases",
+    "source_direct": "https://github.com/X1NONs/PrefBar/releases/download/v0.3.1/Prefbar_V0.3.1.elf",
+    "author": "X1NONs",
+    "details_url": "https://github.com/X1NONs/PrefBar",
+    "release_notes": "New built-in web control center: adjust overlay colors, font size, position, layout and spacing from a browser on the same network, with live preview. Manual .conf editing still works.",
+    "description": "Standalone PS5 performance overlay.",
+    "last_update": "2026-11-24",
+    "version": "0.3.1",
+    "category": "Utilities & Tools",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "b876836d4597e28e519ae6bc80df0eeceefde2e8648491c66d4983a779dff134",
+    "icon_key": ""
+  },
+  {
     "id": "ps5-dump-forge",
     "name": "PS5 Dump Forge",
     "filename": "ps5-dump-forge-0.5.7-ps5.elf",
@@ -986,5 +1024,24 @@
     "max_fw": "",
     "checksum": "4845cac45095361b8983b14d6690622183b0dcfbf6d7fda16e161aa91ff0531e",
     "icon_key": "6f211e808fe2ea7408186264fe3c7afe5f0d69b236bcb7d697f2ca48a8ddebcd"
+  },
+  {
+    "id": "a53-ppr",
+    "name": "A53 PPR",
+    "filename": "a53-ppr-v20.09.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/a53-ppr-v20.09.elf",
+    "source": "",
+    "source_direct": "",
+    "author": "",
+    "details_url": "",
+    "release_notes": "",
+    "description": "A53 PPR payload for PS5 firmware 11.60.",
+    "last_update": "2026-09-20",
+    "version": "v20.09",
+    "category": "Utilities & Tools",
+    "min_fw": "11.60",
+    "max_fw": "",
+    "checksum": "984be03548aa849bcd06757acbed5575a3764532d858f4afaaa243b9f2a08bbf",
+    "icon_key": ""
   }
 ]

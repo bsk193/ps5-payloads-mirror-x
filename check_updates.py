@@ -15,8 +15,8 @@ Usage:
   check_updates.py [--slot <id>]        # limit scan to one slot
                    [--apply]            # run add_payload_x.py bump for each update
                    [--yes]              # with --apply, skip confirmation prompts
-                   [--include-prerelease]  # treat upstream prereleases as candidates
-                                           # (default: stable Latest only)
+                   [--stable-only]      # ignore upstream pre-releases
+                                        # (default: newest release, pre-releases added as experimental)
 
 Exit code 0 unless --apply was asked and at least one bump failed.
 """
@@ -186,9 +186,11 @@ def main() -> None:
     p.add_argument("--slot", help="check only this slot id")
     p.add_argument("--apply", action="store_true", help="run add_payload_x.py bump for each update")
     p.add_argument("--yes", action="store_true", help="with --apply, skip the confirmation prompt")
-    p.add_argument("--include-prerelease", action="store_true",
-                   help="treat upstream prereleases as candidates (default: stable only)")
+    p.add_argument("--stable-only", action="store_true",
+                   help="ignore upstream pre-releases (default: include them, added as experimental)")
+    p.add_argument("--include-prerelease", action="store_true", help=argparse.SUPPRESS)
     args = p.parse_args()
+    args.include_prerelease = not args.stable_only
 
     v2 = json.loads(V2_PATH.read_text())
     slot_ids = sorted({p["id"] for p in v2["payloads"] if "id" in p})
