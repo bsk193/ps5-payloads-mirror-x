@@ -95,6 +95,25 @@
     "icon_key": ""
   },
   {
+    "id": "shadowmountplus",
+    "name": "ShadowMountPlus",
+    "filename": "ShadowMountPlus_1.7beta12.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/ShadowMountPlus_1.7beta12.elf",
+    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
+    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta12/shadowmountplus.elf",
+    "author": "drakmor",
+    "details_url": "https://github.com/drakmor/ShadowMountPlus/releases",
+    "release_notes": "- Introduced configuration format v2, with separate config.ini and profiles.ini, automatic migration, and runtime reloads.\n- Improved mount and launch recovery, including safer cleanup of sandbox layers and handling for M.2 storage.\n- Made library scans more resilient to inaccessible folders and source changes.\n- Improved metadata and filename handling for PS4 trophies, sce_sys files, and dynamic libraries.\n- Added browser back navigation, an option to disable startup library notifications, and better support for long image mount paths.",
+    "description": "A fully automated, background 'Auto-Mounter' payload for Jailbroken PlayStation 5 consoles.",
+    "last_update": "2026-11-08",
+    "version": "1.7beta12",
+    "category": "Utilities & Tools",
+    "min_fw": "",
+    "max_fw": "",
+    "checksum": "8755172ec9bef1bff5453ea75606e0caf7c41b5963f94f5a1087e7e8c6d9b1bd",
+    "icon_key": "2d83b692b57d424d0165cad9be37d9e0abe47a17dca0d7c6b9c05c30c4a0ab90"
+  },
+  {
     "id": "jobeeslair",
     "name": "Jobee's Lair",
     "filename": "JobeesLair_v0.5.6.exfat",
@@ -245,25 +264,6 @@
     "max_fw": "",
     "checksum": "30627513e950f6b7b6b0e5ca43c30e954cdd873a646b8beefe0a4a925ac28479",
     "icon_key": "de625d7674459fd12f00e334b2f97dcc10eca0667e4b349b67dc5882050889a8"
-  },
-  {
-    "id": "shadowmountplus",
-    "name": "ShadowMountPlus",
-    "filename": "ShadowMountPlus_1.7beta11.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/ShadowMountPlus_1.7beta11.elf",
-    "source": "https://github.com/drakmor/ShadowMountPlus/releases",
-    "source_direct": "https://github.com/drakmor/ShadowMountPlus/releases/download/1.7beta11/ShadowMountPlus_1.7beta11.zip",
-    "author": "drakmor",
-    "details_url": "https://github.com/drakmor/ShadowMountPlus/releases",
-    "release_notes": "",
-    "description": "A fully automated, background 'Auto-Mounter' payload for Jailbroken PlayStation 5 consoles.",
-    "last_update": "2026-10-29",
-    "version": "1.7beta11",
-    "category": "Utilities & Tools",
-    "min_fw": "",
-    "max_fw": "",
-    "checksum": "08c843018750bef013fe3a4de5f80c5c9738c6c2dafa2406e6b6e68d7585f3da",
-    "icon_key": "2d83b692b57d424d0165cad9be37d9e0abe47a17dca0d7c6b9c05c30c4a0ab90"
   },
   {
     "id": "ps5-web-file-manager",
@@ -625,6 +625,25 @@
     "max_fw": "",
     "checksum": "ab9a6cb4d3b1daf139d4d646e402b1cf569071acd64599c936d7a3a6164dc779",
     "icon_key": "bfb17e40ad9e638c1eaae93bc8d9a336dab35fd51eaeb7251f122e0b1fd53f8b"
+  },
+  {
+    "id": "a53-ppr",
+    "name": "A53 PPR",
+    "filename": "a53-ppr-v20.09.elf",
+    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/a53-ppr-v20.09.elf",
+    "source": "",
+    "source_direct": "",
+    "author": "",
+    "details_url": "",
+    "release_notes": "",
+    "description": "A53 PPR payload for PS5 firmware 11.60.",
+    "last_update": "2026-09-20",
+    "version": "v20.09",
+    "category": "Utilities & Tools",
+    "min_fw": "11.60",
+    "max_fw": "",
+    "checksum": "984be03548aa849bcd06757acbed5575a3764532d858f4afaaa243b9f2a08bbf",
+    "icon_key": ""
   },
   {
     "id": "ps5-linux-loader",
@@ -1024,24 +1043,5 @@
     "max_fw": "",
     "checksum": "4845cac45095361b8983b14d6690622183b0dcfbf6d7fda16e161aa91ff0531e",
     "icon_key": "6f211e808fe2ea7408186264fe3c7afe5f0d69b236bcb7d697f2ca48a8ddebcd"
-  },
-  {
-    "id": "a53-ppr",
-    "name": "A53 PPR",
-    "filename": "a53-ppr-v20.09.elf",
-    "url": "https://github.com/bsk193/ps5-payloads-mirror-x/releases/download/payloads-mirror/a53-ppr-v20.09.elf",
-    "source": "",
-    "source_direct": "",
-    "author": "",
-    "details_url": "",
-    "release_notes": "",
-    "description": "A53 PPR payload for PS5 firmware 11.60.",
-    "last_update": "2026-09-20",
-    "version": "v20.09",
-    "category": "Utilities & Tools",
-    "min_fw": "11.60",
-    "max_fw": "",
-    "checksum": "984be03548aa849bcd06757acbed5575a3764532d858f4afaaa243b9f2a08bbf",
-    "icon_key": ""
   }
 ]
